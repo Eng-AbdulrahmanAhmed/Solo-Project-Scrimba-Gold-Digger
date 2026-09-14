@@ -7,7 +7,10 @@ GoldDigger is a Node.js web application built as part of the Scrimba Node.js Sol
 - **Custom HTTP Static File Server**: Built using Node.js native `http`, `fs/promises`, and `path` modules.
 - **Dynamic Content Type Detection**: Resolves content types for HTML, CSS, JavaScript, images, and other static assets dynamically.
 - **Custom 404 Error Handling**: Automatically renders a custom 404 page for missing static routes.
-- **Interactive Investment Calculator**: Calculate the quantity of troy ounces purchased based on real-time price displays and user input.
+- **Real-Time Live Gold Price Tracking**: Automatically polls live XAU/USD gold prices every 3 seconds with visual connection indicators (🟢 Live / 🔴 Error).
+- **Troy Ounce Investment Calculator**: Dynamically calculates and displays exact gold troy ounces (`ozt`) based on real-time market prices and user input.
+- **Interactive Purchase Modal**: Uses accessible HTML `<dialog>` element to display an itemized investment summary.
+- **Investment API & Data Logging**: Connects client investment actions (`POST /api/invest`) to backend Node.js endpoints for server-side processing.
 
 ## 🛠️ Project Structure
 
