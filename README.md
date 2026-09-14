@@ -22,8 +22,7 @@ GoldDigger is a Node.js web application built as part of the Scrimba Node.js Sol
 │   ├── gold.png          # Asset image
 │   ├── index.css         # Main stylesheet
 │   ├── index.html        # Main landing page & UI
-│   ├── index.js          # Client-side JavaScript logic
-│   └── temp.html         # Temporary layout file
+│   └── index.js          # Client-side JavaScript logic
 ├── getContentType.js     # Utility to map file extensions to MIME types
 ├── sendResponse.js       # Utility to write HTTP responses
 ├── server.js             # Node.js HTTP server entry point

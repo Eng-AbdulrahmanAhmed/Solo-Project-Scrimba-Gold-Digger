@@ -1,3 +1,4 @@
+let goldPrice = 0;
 function fetchGoldPrice() {
     let textChange ;
     fetch('https://api.gold-api.com/price/XAU/USD')
@@ -37,8 +38,20 @@ investBtn.addEventListener("click", (e) => {
     e.preventDefault();
     dialog.showModal();
     summaryPrice.textContent = `$${value.value}`;
-    
-});
+    fetch("/api/invest", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ amount: value.value }) 
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Server response:", data);
+    })
+   
+})
+
 
 closeButton.addEventListener("click", (e) => {
     e.preventDefault();

@@ -21,7 +21,5 @@ export function getContentType(filePathOrExt) {
     };
 
     const result = types[ext] || "text/html";
-    
-    console.log(`********************** ${result} for ${ext} **********************`);
     return result;
 }

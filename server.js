@@ -3,39 +3,29 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { sendResponse } from "./sendResponse.js"
 import { getContentType }  from './getContentType.js'
+import { handlePostRequest } from './handlers/routeHandlers.js'
 
 const PORT = 8000
 const __dirname = import.meta.dirname
-console.log("Current directory:", __dirname)
 const publicDir = path.join(__dirname, 'public')
-console.log("Public directory:", publicDir)
 const indexPath = path.join(publicDir, 'index.html')
-console.log("Index path:", indexPath)
 const notFoundPath = path.join(publicDir, '404.html')
-console.log("Not found path:", notFoundPath)
-
-console.log("Starting server on port " + PORT)
 
 const server = http.createServer(async (req, res) => {
     console.log(`request received for: *${req.url}*`)
     try {
         const filePath = path.join(
-                publicDir,
-                req.url === '/' ? 'index.html' : req.url
-            )
+            publicDir,
+            req.url === '/' ? 'index.html' : req.url
+        )
         if (!req.url.startsWith('/api') ) {
-             
             let ext = path.extname(filePath)
             let file = await fs.readFile(filePath)
             let type = getContentType(ext)
-            console.log("extension of the file being sent:", ext)
-            console.log("content type of the file being sent:", type)
             sendResponse(res, 200, type, file)
-            // return 
         }
         else if(req.url.startsWith('/api') && req.method === 'POST') {
-           
-            sendResponse(res , 404 ,type , file)
+            await handlePostRequest(req, res)
         }
     }
     catch (error) {
