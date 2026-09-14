@@ -1,0 +1,25 @@
+{
+  "name": "solo-project-gold-digger",
+  "version": "1.0.0",
+  "description": "Scrimba Node Solo Project",
+  "homepage": "https://github.com/Eng-AbdulrahmanAhmed/Solo-Project-Scrimba-Gold-Digger#readme",
+  "bugs": {
+    "url": "https://github.com/Eng-AbdulrahmanAhmed/Solo-Project-Scrimba-Gold-Digger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eng-AbdulrahmanAhmed/Solo-Project-Scrimba-Gold-Digger.git"
+  },
+  "license": "ISC",
+  "author": "Abdulrahman Ahmed",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
