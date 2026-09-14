@@ -1,4 +1,5 @@
 import { sendResponse } from "../sendResponse.js"
+import { writeToFile } from "../utils/writeToFile.js"
 
 export async function handlePostRequest(req, res) {
     console.log("Handling POST request for:", req.url);
@@ -11,6 +12,7 @@ export async function handlePostRequest(req, res) {
         try {
             sendResponse(res , 200 ,"application/json" , JSON.stringify({ message: `Investment of $${JSON.parse(body).amount} received successfully!` } ))
             // return JSON.parse(body)
+            await writeToFile(body)
         }
         catch (error) {
             console.error('Error parsing JSON:', error)

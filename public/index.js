@@ -43,7 +43,11 @@ investBtn.addEventListener("click", (e) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ amount: value.value }) 
+        body: JSON.stringify({ 
+            amount: value.value,
+            ounce: (value.value / goldPrice).toFixed(4),
+            price: goldPrice.toFixed(4)
+        }) 
     })
     .then(response => response.json())
     .then(data => {
