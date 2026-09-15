@@ -8,10 +8,9 @@ export async function handlePostRequest(req, res) {
         for await (const chunk of req) {
             body += chunk
         }
-    
+
         try {
-            sendResponse(res , 200 ,"application/json" , JSON.stringify({ message: `Investment of $${JSON.parse(body).amount} received successfully!` } ))
-            // return JSON.parse(body)
+            sendResponse(res, 200, "application/json", JSON.stringify({ message: `Investment of $${JSON.parse(body).amount} received successfully!` }))
             await writeToFile(body)
         }
         catch (error) {
@@ -19,4 +18,4 @@ export async function handlePostRequest(req, res) {
             throw new Error(`Invalid JSON format: ${error.message}`)
         }
     }
-} 
+}
