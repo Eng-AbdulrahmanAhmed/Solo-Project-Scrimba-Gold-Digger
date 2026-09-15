@@ -1,6 +1,6 @@
 # GoldDigger 🪙
 
-GoldDigger is a Node.js web application built as part of the Scrimba Node.js Solo Project curriculum. It serves static assets and provides an interactive interface to simulate investing in gold with live price tracking.
+GoldDigger is a Node.js web application built as part of the Scrimba Node.js Solo Project curriculum. It serves static assets and provides an interactive interface to simulate investing in gold with live price tracking, investment logging, and downloadable PDF receipts.
 
 ## 🚀 Features
 
@@ -10,12 +10,15 @@ GoldDigger is a Node.js web application built as part of the Scrimba Node.js Sol
 - **Real-Time Live Gold Price Tracking**: Automatically polls live XAU/USD gold prices every 3 seconds with visual connection indicators (🟢 Live / 🔴 Error).
 - **Troy Ounce Investment Calculator**: Dynamically calculates and displays exact gold troy ounces (`ozt`) based on real-time market prices and user input.
 - **Interactive Purchase Modal**: Uses accessible HTML `<dialog>` element to display an itemized investment summary.
-- **Investment API & Data Logging**: Connects client investment actions (`POST /api/invest`) to backend Node.js endpoints for server-side processing.
+- **Persistent Investment Logging**: Appends timestamped purchase details to `investmentsPortfolio.txt` via `POST /api/invest`.
+- **PDF Receipt Generation**: Generates and streams branded downloadable PDF invoices (`GET /api/download-receipt`) dynamically using `pdfkit`.
 
 ## 🛠️ Project Structure
 
 ```
 .
+├── handlers/
+│   └── routeHandlers.js  # API route handling logic
 ├── public/
 │   ├── 404.html          # Custom 404 Error Page
 │   ├── favicon.ico       # Website Favicon
@@ -23,9 +26,13 @@ GoldDigger is a Node.js web application built as part of the Scrimba Node.js Sol
 │   ├── index.css         # Main stylesheet
 │   ├── index.html        # Main landing page & UI
 │   └── index.js          # Client-side JavaScript logic
+├── utils/
+│   ├── generatePdf.js    # Node.js PDFKit stream builder for invoices
+│   └── writeToFile.js    # Persistent purchase logger
 ├── getContentType.js     # Utility to map file extensions to MIME types
 ├── sendResponse.js       # Utility to write HTTP responses
 ├── server.js             # Node.js HTTP server entry point
+├── investmentsPortfolio.txt # Logged transactions file
 ├── package.json          # Project metadata & npm scripts
 └── README.md             # Project documentation
 ```
